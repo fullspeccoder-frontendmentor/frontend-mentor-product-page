@@ -1,13 +1,56 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* # Front-end Style Guide
+
+## Layout
+
+The designs were created to the following widths:
+
+- Mobile: 375px
+- Desktop: 1440px
+
+## Colors
+
+### Primary
+
+- Orange: hsl(26, 100%, 55%)
+- Pale orange: hsl(25, 100%, 94%)
+
+### Neutral
+
+
+
+## Typography
+
+### Body Copy
+
+- Font size (paragraph): 16px
+
+### Font
+
+- Family: [Kumbh Sans](https://fonts.google.com/specimen/Kumbh+Sans)
+- Weights: 400, 700 */
+:root {
+  --primary: hsl(26, 100%, 55%);
+  --primary-pale: hsl(25, 100%, 94%);
+  --hightlighted-text: hsl(220, 13%, 13%);
+  --text: hsl(219, 9%, 45%);
+  --quantity: hsl(220, 14%, 75%);
+  --background: hsl(223, 64%, 98%);
+  --button-background: hsl(0, 0%, 100%);
+  --headlines: hsl(0, 0%, 0%);
+  --norm-text: 400;
+  --bold-text: 700;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Kumbh Sans", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  min-height: 100vh;
+  padding: 0 15rem;
 }
