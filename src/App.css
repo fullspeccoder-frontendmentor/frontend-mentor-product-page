@@ -37,6 +37,7 @@ nav {
   display: flex;
   align-items: center;
   gap: 3rem;
+  position: relative;
 }
 .user-container svg {
   color: var(--highlighted-text);
@@ -51,6 +52,257 @@ nav {
 }
 
 .user-container img:hover {
-  border: 1px solid var(--pale-primary);
+  border: 1px solid var(--primary-pale);
+  cursor: pointer;
+}
+
+.notification-banner {
+  position: absolute;
+  top: 10px;
+  left: 11px;
+  font-size: 0.5rem;
+  width: 25px;
+  height: 10px;
+  border-radius: 10px;
+  background-color: var(--primary);
+  color: var(--white);
+  text-align: center;
+}
+
+.Product > div img:not(.active) {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.Product > div img:not(.active):hover {
+  opacity: 1;
+}
+
+.carousel-btn-left,
+.carousel-btn-right {
+  width: 75px;
+  height: 75px;
+  color: var(--primary);
+  background-color: var(--white);
+  border-radius: 50%;
+  position: absolute;
+  font-size: 2rem;
+  border: 1px solid var(--background);
+  top: 35%;
+}
+
+.carousel-btn-left {
+  left: -40px;
+}
+
+.carousel-btn-right {
+  right: -40px;
+}
+
+.Cart {
+  position: absolute;
+  top: 65px;
+  left: -75px;
+  min-width: 400px;
+  min-height: 150px;
+  overflow-y: hidden;
+  box-shadow: 0px 0px 5px 3px var(--text);
+  background-color: var(--white);
+}
+
+.Cart h4 {
+  border-bottom: 1px solid #c4c4c499;
+  padding: 1rem 1.5rem;
+}
+
+.CartItems {
+  padding: 0.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.CartItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  list-style-type: none;
+  border-radius: 15px;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+}
+
+.CartItem:hover {
+  background-color: var(--background);
+}
+
+.CartItem > img {
+  border-radius: 5px;
+  border: none;
+  cursor: none;
+}
+
+.CartItem > img:hover {
+  cursor: default;
+  border: none;
+}
+
+.CartItem > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.multiplied-quantity {
+  font-weight: var(--bold-text);
+}
+
+.delete-cart-item-btn {
+  margin-left: auto;
+}
+
+.no-items-message {
+  color: var(--text);
+  text-align: center;
+}
+
+.Cart > div {
+  width: 100%;
+  padding: 1rem 1.25rem;
+}
+
+.Cart button {
+  width: 100%;
+  padding: 0.75rem 0;
+  border: none;
+  background-color: var(--primary);
+  color: var(--white);
+  border-radius: 10px;
+  font-family: "Kumbh Sans";
+  font-weight: var(--bold-text);
+  letter-spacing: 0.1rem;
+}
+
+.Main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+  padding: 5rem 2rem;
+}
+
+.Product {
+  width: 50%;
+  position: relative;
+}
+
+.Product img {
+  border-radius: 20px;
+}
+
+.Product > img {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.Product > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.Product > div > img {
+  width: 20%;
+}
+
+.ProductDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+  width: 50%;
+}
+
+.ProductDetails p:first-of-type {
+  font-size: 0.7rem;
+  color: var(--primary);
+  font-weight: var(--bold-text);
+  letter-spacing: 0.25rem;
+}
+
+.ProductDetails h3 {
+  font-size: 3.75rem;
+}
+
+.ProductDetails > p:last-of-type {
+  line-height: 1.75rem;
+}
+
+.discounted-price {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-weight: var(--bold-text);
+}
+
+.discounted-price > span:first-of-type {
+  font-size: 1.5rem;
+}
+
+.discounted-price > span:last-of-type {
+  border-radius: 5px;
+  background-color: var(--primary-pale);
+  color: var(--primary);
+  padding: 0.25rem 0.5rem;
+}
+
+.original-price {
+  font-weight: var(--bold-text);
+  color: var(--text);
+}
+.product-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.product-footer > div {
+  width: 45%;
+  background-color: var(--quantity);
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  opacity: 0.5;
+}
+
+.product-footer > div > span:last-of-type,
+.product-footer > div > span:first-of-type {
+  color: var(--primary);
+  font-weight: var(--bold-text);
+}
+
+.product-footer > div > span:last-of-type:hover,
+.product-footer > div > span:first-of-type:hover {
+  color: var(--primary-pale);
+  cursor: pointer;
+}
+
+.product-footer > button {
+  width: 45%;
+  padding: 1rem 0;
+  background-color: var(--primary);
+  color: var(--white);
+  display: block;
+  border-radius: 10px;
+  border: none;
+}
+
+.product-footer > button:hover {
+  background-color: var(--primary-pale);
+  color: var(--primary);
   cursor: pointer;
 }
