@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 import "./App.css";
 import AvatarImageUrl from "./images/avatars/image-avatar.png";
@@ -49,6 +49,7 @@ function App() {
       image: ProductImage3,
     },
   ]);
+  const [carouselSelected, setcarouselSelected] = useState(true);
 
   const handleAddItem = (newCartItem) => {
     if (!newCartItem) return alert("Item not in inventory!");
@@ -64,10 +65,21 @@ function App() {
     );
   };
 
+  const handleCarouselSelected = () => {
+    setcarouselSelected((selected) => !selected);
+  };
+
   return (
     <div className="App">
       <Nav cartItems={cartItems} onDeleteItem={handleDeleteItem} />
-      <Main item={PRODUCT} onAddItem={handleAddItem} />
+      <Main
+        item={PRODUCT}
+        onAddItem={handleAddItem}
+        onCarouselSelected={handleCarouselSelected}
+      />
+      {carouselSelected && (
+        <ProductModal onCarouselSelected={handleCarouselSelected} />
+      )}
     </div>
   );
 }
@@ -111,10 +123,10 @@ const Nav = ({ cartItems, onDeleteItem }) => {
   );
 };
 
-const Main = ({ item, onAddItem }) => {
+const Main = ({ item, onAddItem, onCarouselSelected }) => {
   return (
     <main className="Main">
-      <ProductImages />
+      <ProductCarousel onCarouselSelected={onCarouselSelected} />
       <ProductDetails item={item} onAddItem={onAddItem} />
     </main>
   );
@@ -170,7 +182,7 @@ const CartItem = ({ id, title, price, quantity, image, onDeleteItem }) => {
   );
 };
 
-const ProductImages = () => {
+const ProductCarousel = ({ onCarouselSelected }) => {
   const [activePhoto, setActivePhoto] = useState(1);
 
   const handlePhotoChange = (id) => {
@@ -192,10 +204,18 @@ const ProductImages = () => {
       <button className="carousel-btn-left" onClick={handleDecrement}>
         {"<"}
       </button>
-      {activePhoto === 1 && <img src={ProductImage1} alt="product" />}
-      {activePhoto === 2 && <img src={ProductImage2} alt="product" />}
-      {activePhoto === 3 && <img src={ProductImage3} alt="product" />}
-      {activePhoto === 4 && <img src={ProductImage4} alt="product" />}
+      {activePhoto === 1 && (
+        <img src={ProductImage1} alt="product" onClick={onCarouselSelected} />
+      )}
+      {activePhoto === 2 && (
+        <img src={ProductImage2} alt="product" onClick={onCarouselSelected} />
+      )}
+      {activePhoto === 3 && (
+        <img src={ProductImage3} alt="product" onClick={onCarouselSelected} />
+      )}
+      {activePhoto === 4 && (
+        <img src={ProductImage4} alt="product" onClick={onCarouselSelected} />
+      )}
       <button className="carousel-btn-right" onClick={handleIncrement}>
         {">"}
       </button>
@@ -265,6 +285,17 @@ const ProductDetails = ({ item, onAddItem }) => {
           <CartIcon /> Add to cart
         </button>
       </div>
+    </div>
+  );
+};
+
+const ProductModal = ({ onCarouselSelected }) => {
+  return (
+    <div className="Modal">
+      <button>
+        <span onClick={onCarouselSelected}>&#9747;</span>
+      </button>
+      <ProductCarousel onCarouselSelected={onCarouselSelected} />
     </div>
   );
 };
