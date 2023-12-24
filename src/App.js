@@ -11,6 +11,7 @@ import ProductThumbnail2 from "./images/products/image-product-2-thumbnail.jpg";
 import ProductThumbnail3 from "./images/products/image-product-3-thumbnail.jpg";
 import ProductThumbnail4 from "./images/products/image-product-4-thumbnail.jpg";
 import { ReactComponent as CartIcon } from "./images/icons/icon-cart.svg";
+import Nav from "./components/Nav/Nav.jsx";
 
 const PRODUCT = {
   id: 4,
@@ -84,80 +85,12 @@ function App() {
   );
 }
 
-const Nav = ({ cartItems, onDeleteItem }) => {
-  const [cartIsOpen, setCartIsOpen] = useState(false);
-
-  const numOfCartItems = cartItems.reduce(
-    (acc, currItem) => acc + currItem.quantity,
-    0
-  );
-
-  return (
-    <nav className="Nav">
-      <div className="navigation">
-        <h1>sneakers</h1>
-        <ul>
-          <li>Collections</li>
-          <li>Men</li>
-          <li>Women</li>
-          <li>About</li>
-          <li>Contact</li>
-        </ul>
-      </div>
-      <div className="user-container">
-        <CartIcon
-          className="cart-icon"
-          onClick={() => {
-            setCartIsOpen((isOpen) => !isOpen);
-          }}
-        />
-        {numOfCartItems > 0 && (
-          <span className="notification-banner">{numOfCartItems}</span>
-        )}
-        <img src={AvatarImageUrl} alt="profile" />
-        {cartIsOpen && (
-          <Cart cartItems={cartItems} onDeleteItem={onDeleteItem} />
-        )}
-      </div>
-    </nav>
-  );
-};
-
 const Main = ({ item, onAddItem, onCarouselSelected }) => {
   return (
     <main className="Main">
       <ProductCarousel onCarouselSelected={onCarouselSelected} />
       <ProductDetails item={item} onAddItem={onAddItem} />
     </main>
-  );
-};
-
-const Cart = ({ cartItems, onDeleteItem }) => {
-  const hasItems = cartItems.length > 0;
-
-  return (
-    <aside className="Cart">
-      <h4>Cart</h4>
-      <ul className="CartItems">
-        {cartItems.map((cartItem) => (
-          <CartItem
-            key={cartItem.id}
-            {...cartItem}
-            onDeleteItem={onDeleteItem}
-          />
-        ))}
-      </ul>
-      {hasItems && (
-        <div>
-          <button>Checkout</button>
-        </div>
-      )}
-      {!hasItems && (
-        <div className="no-items-message">
-          <p>You have no items in cart!</p>
-        </div>
-      )}
-    </aside>
   );
 };
 
