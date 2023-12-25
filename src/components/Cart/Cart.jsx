@@ -1,12 +1,18 @@
-import CartItem from "../CartItem/CartItem";
+import {
+  CartContainer,
+  CartItemsContainer,
+  CartButtonContainer,
+  MessageContainer,
+} from "./Cart";
+import CartItem from "../CartItem/CartItem.component";
 
 const Cart = ({ cartItems, onDeleteItem }) => {
   const hasItems = cartItems.length > 0;
 
   return (
-    <aside className="Cart">
+    <CartContainer>
       <h4>Cart</h4>
-      <ul className="CartItems">
+      <CartItemsContainer>
         {cartItems.map((cartItem) => (
           <CartItem
             key={cartItem.id}
@@ -14,18 +20,18 @@ const Cart = ({ cartItems, onDeleteItem }) => {
             onDeleteItem={onDeleteItem}
           />
         ))}
-      </ul>
+      </CartItemsContainer>
       {hasItems && (
-        <div>
+        <CartButtonContainer>
           <button>Checkout</button>
-        </div>
+        </CartButtonContainer>
       )}
       {!hasItems && (
-        <div className="no-items-message">
+        <MessageContainer>
           <p>You have no items in cart!</p>
-        </div>
+        </MessageContainer>
       )}
-    </aside>
+    </CartContainer>
   );
 };
 

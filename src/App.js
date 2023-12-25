@@ -94,27 +94,6 @@ const Main = ({ item, onAddItem, onCarouselSelected }) => {
   );
 };
 
-const CartItem = ({ id, title, price, quantity, image, onDeleteItem }) => {
-  return (
-    <li className="CartItem">
-      <img src={image} alt={title} />
-
-      <div>
-        <span>{title}</span>
-        <span>
-          {`$${price} x ${quantity}`}{" "}
-          <span className="multiplied-quantity">{`$${
-            Number(price) * Number(quantity)
-          }`}</span>
-        </span>
-      </div>
-      <span className="delete-cart-item-btn" onClick={() => onDeleteItem(id)}>
-        X
-      </span>
-    </li>
-  );
-};
-
 const ProductCarousel = ({ onCarouselSelected }) => {
   const [activePhoto, setActivePhoto] = useState(1);
 

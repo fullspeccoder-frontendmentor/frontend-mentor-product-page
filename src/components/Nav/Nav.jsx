@@ -1,4 +1,4 @@
-import Cart from "../Cart/Cart";
+import Cart from "../Cart/Cart.jsx";
 
 import { ReactComponent as CartIcon } from "../../images/icons/icon-cart.svg";
 import { useState } from "react";
